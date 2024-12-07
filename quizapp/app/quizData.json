@@ -1,0 +1,78 @@
+[
+  {"quizTitle": ""},
+  {
+    "quizTitle": "JavaScript",
+    "questions": [
+      {
+        "question": "Which symbol is used for single-line comments in JavaScript?",
+        "options": ["//", "/*", "#", "<!--"],
+        "correctAnswer": "//"
+      },
+      {
+        "question": "How do you declare a variable in JavaScript?",
+        "options": ["let x;", "var x;", "const x;", "All of the above"],
+        "correctAnswer": "All of the above"
+      },
+      {
+        "question": "Which of these methods can be used to add an element to an array?",
+        "options": ["push()", "append()", "insert()", "add()"],
+        "correctAnswer": "push()"
+      },
+      {
+        "question": "Which method is used to find the length of an array in JavaScript?",
+        "options": ["length()", "size()", "count()", "getLength()"],
+        "correctAnswer": "length()"
+      }
+    ]
+  },
+  {
+    "quizTitle": "HTML",
+    "questions": [
+      {
+        "question": "Which tag is used to define a hyperlink in HTML?",
+        "options": ["<a>", "<link>", "<href>", "<hyperlink>"],
+        "correctAnswer": "<a>"
+      },
+      {
+        "question": "What does the <br> tag do in HTML?",
+        "options": ["It adds a line break", "It adds a paragraph", "It defines bold text", "It defines a heading"],
+        "correctAnswer": "It adds a line break"
+      },
+      {
+        "question": "Which HTML element is used to define an unordered list?",
+        "options": ["<ol>", "<ul>", "<li>", "<list>"],
+        "correctAnswer": "<ul>"
+      },
+      {
+        "question": "Which attribute is used to provide the URL in a link?",
+        "options": ["src", "href", "alt", "link"],
+        "correctAnswer": "href"
+      }
+    ]
+  }, 
+  {
+    "quizTitle": "Python",
+    "questions": [
+      {
+        "question": "What is the correct file extension for Python files?",
+        "options": [".py", ".pyt", ".python", ".pt"],
+        "correctAnswer": ".py"
+      },
+      {
+        "question": "Which of the following is used to define a function in Python?",
+        "options": ["def", "func", "function", "define"],
+        "correctAnswer": "def"
+      },
+      {
+        "question": "What is the result of 3 + 4 * 2?",
+        "options": ["14", "11", "10", "7"],
+        "correctAnswer": "11"
+      },
+      {
+        "question": "Which keyword is used to create a class in Python?",
+        "options": ["class", "def", "object", "create"],
+        "correctAnswer": "class"
+      }
+    ]
+  }
+]
