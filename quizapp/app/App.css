@@ -20,17 +20,20 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 100%;
+  max-width: 400px; /* Improved responsiveness */
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 2rem;  /* Using rem for better scalability */
   margin-bottom: 20px;
+  color: #333;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 1.25rem;  /* Using rem for better scalability */
   margin-bottom: 10px;
+  color: #333;
 }
 
 button {
@@ -53,17 +56,20 @@ button:hover {
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
 p {
-  font-size: 18px;
+  font-size: 1.125rem;
   margin-top: 10px;
+  color: #333;
 }
 
 div {
   margin-bottom: 20px;
 }
 
+/* Flex container for quiz options */
 .quiz-options {
   display: flex;
   flex-direction: column;
@@ -86,18 +92,14 @@ h2, h3 {
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 400px;  /* Limit width for larger screens */
   text-align: left;
 }
 
 .signup-container h2 {
+  font-size: 2rem;
   color: #333;
-  font-size: 24px;
   margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
 }
 
 label {
@@ -144,36 +146,33 @@ button.signup-button:hover {
   background-color: #357ab7;
 }
 
+/* Progress bar container */
 .progress-container {
   width: 100%;
   background-color: #f0f0f0;
   border-radius: 5px;
   margin-top: 20px;
-  margin-bottom: 40px; /* Add this line */
+  margin-bottom: 40px; /* Added margin to improve spacing */
   position: relative;
-  height: 10px;
-  color:#333;
-  font-size: 18px;
-  font-weight: bold;
+  height: 20px; /* Increased height for visibility */
 }
-
 
 .progress-bar {
   height: 100%;
   background-color: #4caf50;
   border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
+/* Feedback text styling */
 .feedback {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   color: #333;
   margin-top: 15px;
   padding: 20px;
 }
 
+/* Next Question button styling */
 button.next-question {
   background-color: #e67e22;
   color: white;
@@ -189,4 +188,29 @@ button.next-question {
 
 button.next-question:hover {
   background-color: #d35400;
+}
+
+.signout-button {
+  width: 50%;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .App {
+    width: 90%;
+  }
+
+  .signup-container {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  button {
+    max-width: 100%;
+  }
+
+  .quiz-options button {
+    width: 100%;
+  }
+
 }

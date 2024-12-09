@@ -1,29 +1,22 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 import './App.css';
-import QuizData from './quizData.json';  // Your provided quiz data
+import QuizData from './quizData.json'; 
+import { auth } from './_utils/firebase'; 
+import { useUserAuth } from "./_utils/auth-context";
 
 function App() {
-  const [isSignedUp, setIsSignedUp] = useState(false);
   const [selectedQuiz, setSelectedQuiz] = useState(0);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [feedback, setFeedback] = useState("");
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [correctAnswers, setCorrectAnswers] = useState(0);  // Track correct answers
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const {user, gitHubSignIn, firebaseSignOut} = useUserAuth();
 
-  const handleSignUp = () => {
-    if (!email || !password) {
-      setError('Please fill in both email and password');
-    } else {
-      setIsSignedUp(true);
-      setError('');
-    }
-  };
+
+
 
   const handleQuizSelect = (quizIndex) => {
     console.log('Quiz Selected:', quizIndex);
@@ -34,8 +27,6 @@ function App() {
     setQuestionIndex(0); 
     setCorrectAnswers(0);  
   };
-  
-  
 
   const handleReturnToMain = () => {
     setSelectedQuiz(null);
@@ -50,16 +41,15 @@ function App() {
 
     if (answer === question.correctAnswer) {
       setFeedback("Correct! Well done.");
-      setCorrectAnswers(correctAnswers + 1); // Increment correct answers
+      setCorrectAnswers(correctAnswers + 1); 
     } else {
       setFeedback("Incorrect! Try again.");
     }
   };
 
   const renderQuiz = () => {
-    if (selectedQuiz === null) return null;  // Prevent errors if no quiz is selected
-    const quiz = QuizData[selectedQuiz];  // Get the selected quiz based on index
-    const question = quiz.questions[questionIndex];  // Get the current question
+    const quiz = QuizData[selectedQuiz]; 
+    const question = quiz.questions[questionIndex];
   
     return (
       <div className="quiz-container">
@@ -96,7 +86,6 @@ function App() {
       </div>
     );
   };
-  
 
   const renderProgress = () => {
     const quiz = QuizData[selectedQuiz];
@@ -113,46 +102,26 @@ function App() {
 
   return (
     <div className="App">
-      {!isSignedUp ? (
-        <div className="signup-container">
-          <h2>Sign Up</h2>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-            />
-          </div>
-          {error && <p className="error-message">{error}</p>}
-          <button className="signup-button" onClick={handleSignUp}>Sign Up</button>
-        </div>
+      <h1>QuizMore</h1>
+      <img width={"50%"} src='https://media.istockphoto.com/id/1186386668/vector/quiz-in-comic-pop-art-style-quiz-brainy-game-word-vector-illustration-design.jpg?s=612x612&w=0&k=20&c=mBQMqQ6kZuC9ZyuV5_uCm80QspqSJ7vRm0MfwL3KLZY='></img>
+      {!user ? (
+            <button className="signin-button" onClick={gitHubSignIn}>Sign In/Sign Up</button>
       ) : !selectedQuiz ? (
         <div>
           <h2>Select a Quiz</h2>
+          <h3>Test your knowledge on coding languages</h3>
           {QuizData.map((quiz, index) => (
               <button key={index} onClick={() => handleQuizSelect(index)}>
                 {quiz.quizTitle}
               </button>
             ))}
+          <button className="signout-button" onClick={firebaseSignOut}>Sign Out</button>
 
         </div>
       ) : (
         <div>
           {renderQuiz()}
-          {renderProgress()}  {/* Display the progress bar and score */}
+          {renderProgress()}
           <button onClick={handleReturnToMain}>Return to Main</button>
         </div>
       )}
